@@ -3,6 +3,7 @@
   "logo": {
     "type": "file",
     "source": "~/.config/fastfetch/rebecca_small.txt",
+    "color": {"1": "38;2;181;255;223"},
     "width": 65,
     "height": 35,
     "padding": {
