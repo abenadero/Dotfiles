@@ -1,0 +1,153 @@
+// -*- mode: jsonc -*-
+{
+    "include": ["~/.config/waybar/custom/dividers.jsonc"],
+    // Top Bar Settings
+    "name": "top_bar",
+    "layer": "top", 
+    "position": "top",
+    "height": 31,
+
+    // Modules
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/right_div",
+        "custom/right_softdiv",
+        "custom/tab_div"
+        // "hyprland/window"        
+    ],
+    "modules-center": [
+        "custom/left_softdiv",
+        "custom/left_div2",
+        "custom/left_div",
+	    "clock",
+        "custom/right_div",
+        "custom/right_div2",
+        "custom/right_softdiv"
+    ],
+    "modules-right": [
+        "tray",
+        "custom/tab_div",
+        "custom/dither",
+        "network",
+        "custom/blank_div",
+        "pulseaudio",
+        "custom/blank_div",
+	    "custom/poweroff"
+    ],
+
+    // Workspaces
+    "hyprland/workspaces": {
+      "sort-by-number": true,  
+      "format": "{icon}",
+      "on-click": "activate",
+      "format-icons": {
+        "default": "",
+        "active": "",
+        "urgent": " "
+        }
+    },
+
+    // Separator
+    "custom/blank_div": {
+    	"format": " "
+    },
+
+    "custom/tab_div": {
+    	"format": "    "
+    },
+
+    "custom/dither":
+    {
+        "format": "𜺏"
+    },
+
+    "custom/left_softdiv":
+    {
+        "format": ""
+    },
+
+    "custom/right_softdiv":
+    {
+        "format": ""
+    },
+
+    // Clock
+    "clock": {
+        "timezone": "Europe/Madrid",
+        "format": "{:%H:%M}",
+        "on-click": "exec kitty",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+        	"mode"          : "month",
+            "mode-mon-col"  : 1,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+            	"months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            }
+    },
+
+    // Audio Control
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "on-click": "pavucontrol",
+        "format-muted": "{volume}% ",
+        "format-icons": {
+            "default": ["",""]
+        }
+    },
+
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "width": 100,
+        "orientation": "horizontal",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+    },
+    // Power Control
+    "custom/poweroff": {
+        "format" : "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/logout_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend"
+		}
+    },
+
+    // Tray
+    "tray": {
+        "icon-size": 10,
+        "spacing": 6
+
+    },
+
+    // Taskbar
+    "taskbar": {
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "format": "{title:.15}",
+        "all-outputs": true,
+        "active-only": false
+    },
+
+    "hyprland/window": {
+        "format": "",
+        "icon": true,
+        "show-passive-items": true
+    },
+
+    // Network
+    "network": {
+        "format": "{icon}",
+        "on-click": ""
+    }
+}

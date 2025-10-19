@@ -1,0 +1,87 @@
+// -*- mode: jsonc -*-
+{
+    "include": ["~/.config/waybar/custom/dividers.jsonc"],
+    // Top Bar Settings
+    "name": "top_bar",
+    "layer": "top", 
+    "position": "top",
+    "spacing": 4, 
+    "height": 31,
+
+    // Modules
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/right_div",
+        "custom/separator"
+    ],
+    "modules-center": [
+	    "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "custom/blank_separator",
+	    "custom/poweroff"
+    ],
+
+    // Workspaces
+    "hyprland/workspaces": {
+      "sort-by-number": true,  
+      "format": "{icon}",
+      "on-click": "activate",
+      "format-icons": {
+        "default": "",
+        "active": "",
+        "urgent": " "
+        }
+    },
+
+    // Separator
+    "custom/blank_separator": {
+    	"format": "   "
+    },
+
+    "custom/separator": {
+        "format": "🭐"
+    },
+
+    // Clock
+    "clock": {
+        "timezone": "Europe/Madrid",
+        "format": "{:%H:%M  %d/%b/%Y}",
+        "on-click": "exec kitty",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+        	"mode"          : "month",
+            "mode-mon-col"  : 1,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+            	"months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            },
+    },
+
+    // Audio Control
+    "pulseaudio": {
+        "format": "{volume}%  ",
+        "on-click": "pavucontrol"
+    },
+
+    // Power Control
+    "custom/poweroff": {
+        "format" : "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/logout_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    }
+}
