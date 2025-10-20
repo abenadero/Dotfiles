@@ -1,49 +1,129 @@
+/*******************
+ *     Imports     *
+ *******************/
+
 @import "colors.css";
 
+
+/*******************
+ *  General Looks  *
+ *******************/
+
 * {
-    border: none;
-    font-family: "RecMonoLinear Nerd Font";
+    font-family: "AtkynsonMono Nerd Font Mono";
+    font-weight: bold;
 }
 
-window.top_bar {
-    background-color: alpha(@background, 0);
+window#waybar.top_bar > box{
+    background-color: alpha(@background, 1);
+    border-top: 3px solid @bordercolor;
+    border-bottom: 3px solid @bordercolor;
+    border-left: 0px;
+    border-right: 0px;
 }
+
+
+/*******************
+ *     Modules     *
+ *******************/
 
 .modules-left {
-	border: 2px solid @border;
-	border-radius: 10px;
-	background-color: alpha(@background, 0.8);
-	padding: 4px;
-	padding-right: 8px;
-	margin: 2px;
-}
-
-.modules-center {
-	border: 2px solid @border;
-	border-radius: 10px;
-	background-color: alpha(@background, 0.8);
-	padding: 4px;
-	padding-left: 8px;
-	padding-right: 8px;
-	margin: 2px;
+    background-color: alpha(@background, 1);
+    padding: 0px;
 }
 
 .modules-right {
-	border: 2px solid @border;
-	border-radius: 10px;
-	background-color: alpha(@background, 0.8);
-	padding: 4px;
-	padding-left: 8px;
-	padding-right: 8px;
-	margin: 2px;
+    background-color: alpha(@backgroundD, 1);
+    padding: 0px;
+}
+
+.modules-center {
+    background-color: alpha(@backgroundD, 1);
+    padding: 0px;
+}
+
+
+/********************
+ *    Separators    *
+ ********************/
+
+.modules-center #custom-right_div {
+    background-color: alpha(@backgroundL, 1);
+    color: @backgroundD;
+    font-size: 20px;
+}
+
+.modules-center #custom-right_div2 {
+    background-color: alpha(@background, 1);
+    color: @backgroundL;
+    font-size: 20px;
+}
+
+.modules-center #custom-right_softdiv {
+    background-color: alpha(@background, 1);
+    color: @backgroundL;
+    font-size: 20px;
+}
+
+.modules-center #custom-left_div {
+    background-color: alpha(@backgroundL, 1);
+    color: @backgroundD;
+    font-size: 20px;
+}
+
+.modules-center #custom-left_div2 {
+    background-color: alpha(@background, 1);
+    color: @backgroundL;
+    font-size: 20px;
+}
+
+.modules-center #custom-left_softdiv {
+    background-color: alpha(@background, 1);
+    color: @backgroundL;
+    font-size: 20px;
+}
+
+#custom-right_div {
+    background-color: alpha(@background, 1);
+    color: @backgroundL;
+    font-size: 20px;
+}
+
+#custom-right_softdiv {
+    background-color: alpha(@background, 1);
+    color: @backgroundL;
+    font-size: 20px;
+}
+
+#custom-separator {
+    color: @foreground;
+}
+
+#custom-blank_div {
+
+}
+
+#custom-dither {
+    background-color: alpha(@backgroundD, 1);
+    color: @background;
+    font-size: 19px;
+}
+
+/*******************
+ *    Workspaces   *
+ *******************/
+#workspaces {
+    background-color: @backgroundL;
 }
 
 #workspaces button {
     color: @foreground;
-    font-size: 1.0rem;
+    font-size: 18px;
+    padding: 0 6px;
     margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    min-height: 0px;
+    min-width: 10px;
+    border: 0;
 }
 
 #workspaces button.active {
@@ -55,30 +135,53 @@ window.top_bar {
 }
 
 #clock {
-    font-size: 14px;
+    color: white;
 }
 
+#custom-poweroff {
+    color: @salmon;
+    padding: 0 6px;
+}
 
-menu {
-    border-radius: 20px;
-    border: solid 2px @peach;
+#pulseaudio {
+    font-size: 15px;
+    min-width: 68px;
+    padding: 0 6px;
+}
+
+#pulseaudio.muted {
+    color: grey;
+    min-width: 68px;
+}
+
+#pulseaudio-slider {
+    min-width: 80px;
+}
+
+#pulseaudio-slider slider {
+    min-height: 1px;
+    min-width: 1px;
+    font-size: 1px;
+    opacity: 1;
+    border: none;
+    border-radius: 0;
+    background-image: none;
+    background-color: @backgroundL;
     box-shadow: none;
-    background-color: alpha(@base, 0.7);
-    color: @pink;
-    padding: 10;
-    padding-top: 5;
-    padding-bottom: 5;
 }
 
-menuitem {
-    margin-top: 5;
-    margin-bottom: 5;
-    background-color: alpha(@surface2, 0.7);
-    border-radius: 15px;
-    font-weight: bold;
+#pulseaudio-slider trough {
+    background-color: alpha(@background, 0.2);
+    min-width: 80px;
+    min-height: 2px;
 }
 
-menuitem:hover {
-    font-weight: bolder;
-    color: @rosewater;
+#pulseaudio-slider scale trough highlight {
+    background-color: @backgroundL;
+    color: @backgroundL;
+}
+
+#taskbar {
+    min-width: 80px;
+    padding: 0 6px;
 }

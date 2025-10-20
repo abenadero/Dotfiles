@@ -1,25 +1,37 @@
 // -*- mode: jsonc -*-
 {
-	// Top Bar Settings
+    "include": ["~/.config/waybar/custom/dividers.jsonc"],
+    // Top Bar Settings
     "name": "top_bar",
     "layer": "top", 
     "position": "top",
-    "height": 30,
-    "spacing": 4, 
+    "height": 31,
 
-    // "margin-left": 10,
-    // "margin-right": 10,
-
-	// Modules
+    // Modules
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/right_div",
+        "custom/right_softdiv",
+        "custom/tab_div"
+        // "hyprland/window"        
     ],
     "modules-center": [
-	    "clock"
+        "custom/left_softdiv",
+        "custom/left_div2",
+        "custom/left_div",
+	    "clock",
+        "custom/right_div",
+        "custom/right_div2",
+        "custom/right_softdiv"
     ],
     "modules-right": [
+        "tray",
+        "custom/tab_div",
+        "custom/dither",
+        "network",
+        "custom/blank_div",
         "pulseaudio",
-        "custom/blank_separator",
+        "custom/blank_div",
 	    "custom/poweroff"
     ],
 
@@ -36,14 +48,33 @@
     },
 
     // Separator
-    "custom/blank_separator": {
-    	"format": "  "
+    "custom/blank_div": {
+    	"format": " "
+    },
+
+    "custom/tab_div": {
+    	"format": "    "
+    },
+
+    "custom/dither":
+    {
+        "format": "𜺏"
+    },
+
+    "custom/left_softdiv":
+    {
+        "format": ""
+    },
+
+    "custom/right_softdiv":
+    {
+        "format": ""
     },
 
     // Clock
     "clock": {
         "timezone": "Europe/Madrid",
-        "format": "{:%H:%M  %d/%b/%Y}",
+        "format": "{:%H:%M}",
         "on-click": "exec kitty",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
@@ -58,15 +89,27 @@
                 "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
                 "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
                 }
-            },
+            }
     },
 
     // Audio Control
     "pulseaudio": {
-        "format": "{volume}%  ",
-        "on-click": "pavucontrol"
+        "format": "{volume}% {icon}",
+        "on-click": "pavucontrol",
+        "format-muted": "{volume}% ",
+        "format-icons": {
+            "default": ["",""]
+        }
     },
 
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "width": 100,
+        "orientation": "horizontal",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+    },
     // Power Control
     "custom/poweroff": {
         "format" : "⏻ ",
@@ -76,8 +119,35 @@
 		"menu-actions": {
 			"shutdown": "shutdown",
 			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
+			"suspend": "systemctl suspend"
 		}
+    },
+
+    // Tray
+    "tray": {
+        "icon-size": 10,
+        "spacing": 6
+
+    },
+
+    // Taskbar
+    "taskbar": {
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "format": "{title:.15}",
+        "all-outputs": true,
+        "active-only": false
+    },
+
+    "hyprland/window": {
+        "format": "",
+        "icon": true,
+        "show-passive-items": true
+    },
+
+    // Network
+    "network": {
+        "format": "{icon}",
+        "on-click": ""
     }
 }

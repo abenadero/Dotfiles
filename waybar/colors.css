@@ -1,9 +1,13 @@
 @define-color disabled #5e6160;
 
 @define-color foreground #a7f7e0;
-@define-color background #17394d;
+@define-color backgroundL #749DA3;
+@define-color background #1E2437;
+@define-color backgroundM #6A98B0;
+@define-color backgroundD #080917;
 
-@define-color border #b6f6ff;
+@define-color bordercolor #07060D;
 
 @define-color melocoton #e7b44c;
-
+@define-color plata #38383E;
+@define-color salmon #FF9696;
