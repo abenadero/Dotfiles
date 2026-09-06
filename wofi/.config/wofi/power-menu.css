@@ -1,0 +1,42 @@
+@import url(".config/colors/catppuccin-mocha.css");
+
+window {
+    background-color: @crust;
+    border-radius: 10px;
+    border: 1px solid @mauve;
+}
+
+#entry {
+    margin: 4px;
+    padding: 6px;
+    border-radius: 10px;
+    min-width: 120px;
+    min-height: 20px;
+    background-color: @surface0;
+    color: @mauve;
+}
+
+#entry:selected {
+    background-color: @surface2;
+}
+
+#text {
+    color: @lavender;
+}
+
+#outer-box {
+    margin: 0;
+    padding: 4px;
+}
+
+#inner-box {
+    margin: 0;
+    padding: 0;
+}
+
+#scroll {
+    margin: 0;
+    padding: 0;
+}
+
+
