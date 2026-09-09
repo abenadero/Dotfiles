@@ -66,13 +66,26 @@ menu menuitem:hover {
     margin: 2px 2px;    
 }
 
+#pulseaudio:hover,
+#battery:hover,
+#custom-no-battery:hover,
+#network:hover,
+#cpu:hover,
+#memory:hover,
+#tray:hover,
+#clock:hover,
+#custom-power:hover {
+    color: @rosewater;
+    background-color: alpha(@teal, 0.55);
+    border-radius: 8px;
+    margin: 4px;
+}
+
 .modules-right, .modules-left {
 	border-radius: 0px;
 	border: 0px solid @teal;
-	background-color: alpha(@teal, 0.15);
-	
-}
-
+	background-color: alpha(@teal, 0.35);
+}	
 /* ---------- workspaces ---------- */
 
 
@@ -83,6 +96,7 @@ menu menuitem:hover {
     color: @lavender;
     font-size: 20px;
     transition: all 0.2s ease-in-out;
+    font-weight: bold;
 }
 
 #workspaces button.empty {
@@ -91,12 +105,17 @@ menu menuitem:hover {
 
 #workspaces button.active {
     color: @rosewater;
-    font-weight: bold;
+    background-color: alpha(@teal, 0.55);
 }
 
 #workspaces button.urgent {
     background-color: @red;
     color: @crust;
+}
+
+#workspaces button:hover {
+	color: @rosewater;
+	background-color: alpha(@teal, 0.35);
 }
 
 /* ---------- clock ---------- */
