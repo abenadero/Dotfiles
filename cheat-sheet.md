@@ -1,10 +1,10 @@
 #Instalación arch base
 
-#Post-instalación arch
+## Post-instalación arch
 sudo pacman -S flatpak waybar fastfetch hyprpaper man micro firefox 7zip unzip
 sudo pacman -S hyprtoolkit hyprpolkitagent hyprutils hyprwire hyprlang hyprshot
-sudo pacman -S --needed base-devel git stow
-sudo pacman -S pavucontrol
+sudo pacman -S --needed base-devel git stow btop
+sudo pacman -S pavucontrol dmidecode nvmi-cli
 
 ## Instalar AUR
 git clone https://aur.archlinux.org/yay.git
@@ -26,6 +26,11 @@ hl.config({
         no_hardware_cursors = 1,
     }
 })
+
+## Instalar fuentes
+mkdir -p ~/.local/share/fonts
+cp /ruta/a/las/fuentes/*.ttf ~/.local/share/fonts/
+fc-cache -fv
 
 ## Binding fullscreen
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen()
